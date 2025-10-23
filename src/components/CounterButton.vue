@@ -1,7 +1,5 @@
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-
 
 const props = defineProps<{
     count: number;
@@ -9,14 +7,14 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-    (e: 'update:count', value: number): void;  
+    (e: 'update:count', value: number): void;
 }>();
 
 const currentCount = ref(props.count);
 
-const incrementValue =  computed( () => props.step || 1 );
+const incrementValue = computed(() => props.step || 1);
 
-watch( currentCount , ( newCount, oldCount   ) => {
+watch(currentCount, (newCount, oldCount) => {
     emit('update:count', currentCount.value);
 });
 
@@ -26,14 +24,36 @@ watch( currentCount , ( newCount, oldCount   ) => {
     <div>
         <button @click=" currentCount -= incrementValue">-</button>
 
-        <input  type="number" 
-                v-model="currentCount" 
-                :step="incrementValue"
-                >
+        <input type="number" v-model="currentCount" :step="incrementValue">
 
         <button @click=" currentCount += incrementValue">+</button>
     </div>
 </template>
 
 <style>
+/* make it look nicer */
+button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    margin: 5px;
+    line-height: 30px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+input {
+    width: 60px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color:white ;
+    color: #007bff;
+    border: none;
+
+}
 </style>
