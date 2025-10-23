@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 
 const props = defineProps<{
@@ -16,28 +16,22 @@ const currentCount = ref(props.count);
 
 const incrementValue =  computed( () => props.step || 1 );
 
-const increment = () => {
-    currentCount.value += incrementValue.value;
+watch( currentCount , ( newCount, oldCount   ) => {
     emit('update:count', currentCount.value);
-};
-
-const decrement = () => {
-    currentCount.value -= incrementValue.value;
-    emit('update:count', currentCount.value);
-};
+});
 
 </script>
 
 <template>
     <div>
-        <button @click="decrement">-</button>
+        <button @click=" currentCount -= incrementValue">-</button>
 
         <input  type="number" 
                 v-model="currentCount" 
                 :step="incrementValue"
-                @change="$emit('update:count', currentCount)">
-                
-        <button @click="increment">+</button>
+                >
+
+        <button @click=" currentCount += incrementValue">+</button>
     </div>
 </template>
 
