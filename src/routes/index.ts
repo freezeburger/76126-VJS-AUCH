@@ -6,6 +6,7 @@ import * as Domains from '@/domains'
 const routes = [
     { path: '/', component: Pages.HomePage, meta: { title: 'Home' } },
     { path: '/about', component: Pages.AboutPage, meta: { title: 'About' } },
+    { path: '/notifications', component: Pages.NotificationsPage, meta: { title: 'Notifications' } },
     { name:'Products', path: '/products', component: Domains.Product, meta: { title: 'Products' } }
 ]
 

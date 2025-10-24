@@ -14,6 +14,7 @@ import * as UI from '@/components';
 
     <RouterLink to="/">Go to Home</RouterLink>  | 
     <RouterLink to="/about">Go to About</RouterLink>  | 
+    <RouterLink to="/notifications">Go to Notifications</RouterLink>  | 
     <RouterLink to="/products">Go to Products</RouterLink>
 
     <UI.Main disabled>

@@ -1,13 +1,14 @@
 
 import { type CrudService, type ENDPOINTS } from "@/core/types/pattern.type";
 import type { Generics } from "@/core/types";
+import { http } from "@/bridges";
 
 
 export abstract class CrudAbstract<T extends Generics.WithUniqueId> implements CrudService<T>{
 
     API!:  ENDPOINTS;
 
-    protected http = {} as any;
+    protected http = http;
 
     constructor() {
         setTimeout(() => {

@@ -4,7 +4,7 @@
  */
 import * as Generics from "./generic.type";
 
-export type ENDPOINTS = '/notifications' | 'products' | 'flights' | 'orders';
+export type ENDPOINTS = '/notifications' | '/products' | '/flights' | '/orders';
 
 export interface CrudService<T extends Generics.WithUniqueId> {
 

@@ -13,6 +13,12 @@ const modelValue = defineModel<string>();
 </script>
 
 <template>
-    <input type="text" :value="modelValue" 
+    <input type="text" :value="modelValue"
            @input="$emit('update:modelValue', ($event as any).target?.value )" />
 </template>
+
+<style scoped>
+input{
+  width: 100%;
+}
+</style>

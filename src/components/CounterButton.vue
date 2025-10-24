@@ -30,7 +30,7 @@ watch(currentCount, (newCount, oldCount) => {
     </div>
 </template>
 
-<style>
+<style scoped>
 /* make it look nicer */
 button {
     width: 30px;

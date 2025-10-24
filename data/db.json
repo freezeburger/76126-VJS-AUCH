@@ -1800,12 +1800,14 @@
   ],
   "notifications": [
     {
-      "id": "d974",
+      "id": "2321",
       "message": "Hello from JSON Server!"
     },
     {
-      "id": "2321",
-      "message": "Hello from JSON Server!"
+      "id": "377e",
+      "title": "A",
+      "message": "B",
+      "createdAt": 1761311546096
     }
   ],
   "flights": [
