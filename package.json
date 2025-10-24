@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "json-server --watch ./data/db.json --port 5050",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },

@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { ToggleSwitch } from '@/components';
+import { Input, ToggleSwitch } from '@/components';
+import { ref } from 'vue';
+
+
+const isOn = ref(false);
+
+const text = ref('Hello');
 
 </script>
 
 <template>
     ABOUT PAGE
     <hr>
-    <ToggleSwitch :model-value="true" />
-    <ToggleSwitch :model-value="true" disabled />
 
-    <!-- <p>The switch is {{ isOn ? 'ON' : 'OFF' }}</p -->
+    <!-- <ToggleSwitch :model-value="isOn" @update:modelValue="isOn = $event" /> -->
+
+    
+    <ToggleSwitch v-model="isOn" />
+
+    <Input v-model="text" /> - {{ text }}
+
+
+    <p>The switch is {{ isOn ? 'ON' : 'OFF' }}</p>
 </template>
