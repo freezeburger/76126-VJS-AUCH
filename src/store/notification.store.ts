@@ -30,7 +30,8 @@ export const useNotificationStore = defineStore('notification', () => {
             createdAt: Date.now()
         };
         loading.value = true;
-        await notificationService.create(payload);
+        const data = await notificationService.create(payload);
+        notifications.value = [data, ...notifications.value];
         loading.value = false;
         feedbackMessage.value = 'Notification added successfully';
     };

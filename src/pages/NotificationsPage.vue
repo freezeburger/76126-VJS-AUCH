@@ -3,7 +3,6 @@ import type { NotificationDTO } from '@/core/dto/NotificationDTO';
 import { useNotificationStore } from '@/store/notification.store';
 import { onMounted, ref } from 'vue';
 
-
 const notificationStore = useNotificationStore();
 
 onMounted(notificationStore.getNotifications);
