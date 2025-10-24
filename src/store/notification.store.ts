@@ -14,17 +14,8 @@ import { computed, ref } from "vue";
  * - getNotifications: Get the list of all notifications.
  * 
  * @example
- * 
- * const {
-        count,
-        notifications,
-        loading,
-        feedbackMessage,
-        addNotification,
-        removeNotification,
-        clearNotifications,
-        getNotifications
-    } = useNotificationStore();
+ *
+ * const notificationStore = useNotificationStore();
  */
 export const useNotificationStore = defineStore('notification', () => {
 
@@ -62,10 +53,13 @@ export const useNotificationStore = defineStore('notification', () => {
         feedbackMessage.value = 'All notifications cleared successfully'; 
     };
 
-    const getNotifications = async () => { 
+    const getNotifications =  () => { 
         loading.value = true;
-        notifications.value = await notificationService.read();
-        loading.value = false;
+        notificationService.read().then(data => {
+            console.log(data);
+            notifications.value = data;
+            loading.value = false;
+        });
         feedbackMessage.value = 'Notifications fetched successfully';
     };
 

@@ -1,42 +1,34 @@
 <script setup lang="ts">
 import type { NotificationDTO } from '@/core/dto/NotificationDTO';
-import { notificationService } from '@/core/services/notification.service';
+import { useNotificationStore } from '@/store/notification.store';
 import { onMounted, ref } from 'vue';
 
-const notifications = ref<NotificationDTO[]>([]);
 
-const load = async () => {
-    notifications.value = await notificationService.read();
-}
+const notificationStore = useNotificationStore();
 
-const deleteNotification = async (notif: NotificationDTO) => {
-    await notificationService.delete(notif);
-    await load();
-}
+onMounted(notificationStore.getNotifications);
 
-onMounted(load);
-
-const newNotification = ref<Omit<NotificationDTO, 'id'>>({
+const newNotification = ref<Omit<NotificationDTO, 'id'|'createdAt'>>({
     title: '',
-    message: '',
-    createdAt: Date.now(),
+    message: ''
 });
 
-
 const createNotification = async () => {
-    await notificationService.create(newNotification.value);
+    await notificationStore.addNotification(newNotification.value);
     newNotification.value = {
         title: '',
-        message: '',
-        createdAt: Date.now(),
+        message: ''
     };
-    await load();
 }
 </script>
 
 <template>
-    <h1>Notifications Page</h1>
-    <button @click="load">Refresh</button>
+    <h1>Notifications Page {{ notificationStore.count }}</h1>
+    <div v-if="notificationStore.feedbackMessage">{{ notificationStore.feedbackMessage }}</div>
+    <div v-if="notificationStore.loading">Loading...</div>
+
+    <button @click="notificationStore.getNotifications">Refresh</button>
+
     <hr>
     <div style="display: flex; gap: 10px; align-items: center; flex-direction: column;">
         <code>{{ newNotification }}</code>
@@ -47,8 +39,8 @@ const createNotification = async () => {
 
     <hr>
     <ul>
-        <li v-for="notif in notifications" :key="notif.id">
-            <button @click="deleteNotification(notif)">X</button>{{ notif.message }} - {{ notif.createdAt }}
+        <li v-for="notif in notificationStore.notifications" :key="notif.id">
+            <button @click="notificationStore.removeNotification(notif)">X</button>{{ notif.message }} - {{ notif.createdAt }}
         </li>
     </ul>
 </template>
