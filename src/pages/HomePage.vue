@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import ProductSearch from '@/features/ProductSearch.vue';
 </script>
 
 <template>
-    <ProductSearch />
+    <h1>Home Page</h1>
 </template>
