@@ -12,8 +12,21 @@ import { computed, ref } from "vue";
  * - removeNotification: Remove a notification.
  * - clearNotifications: Clear all notifications.
  * - getNotifications: Get the list of all notifications.
+ * 
+ * @example
+ * 
+ * const {
+        count,
+        notifications,
+        loading,
+        feedbackMessage,
+        addNotification,
+        removeNotification,
+        clearNotifications,
+        getNotifications
+    } = useNotificationStore();
  */
-const useNotificationStore = defineStore('notification', () => {
+export const useNotificationStore = defineStore('notification', () => {
 
     const notifications = ref<NotificationDTO[]>([]);
     const loading = ref<boolean>(false);
@@ -56,8 +69,8 @@ const useNotificationStore = defineStore('notification', () => {
         feedbackMessage.value = 'Notifications fetched successfully';
     };
 
-
     return {
+        count,
         notifications,
         loading,
         feedbackMessage,
