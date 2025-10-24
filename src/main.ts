@@ -6,8 +6,6 @@ import App from './App.vue'
 import { router } from './routes'
 import { auchanLibrary } from './components/ui.plugin'
 
-
-
 const app = createApp(App)
 
 app.use(auchanLibrary)

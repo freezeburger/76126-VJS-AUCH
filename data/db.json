@@ -1798,7 +1798,16 @@
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
     }
   ],
-  "notifications": [],
+  "notifications": [
+    {
+      "id": "d974",
+      "message": "Hello from JSON Server!"
+    },
+    {
+      "id": "2321",
+      "message": "Hello from JSON Server!"
+    }
+  ],
   "flights": [
     {
       "flight_date": "2025-08-28",
